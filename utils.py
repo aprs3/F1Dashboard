@@ -1,14 +1,21 @@
-import fastf1
-import fastf1.plotting
+
 from datetime import datetime, timedelta 
 import pandas as pd
 import pycountry
 import os
 import plotly.graph_objects as go
 
+import contextlib
+import io
+
+buffer = io.StringIO()
+with contextlib.redirect_stdout(buffer):  
+    import fastf1
+    import fastf1.plotting
+
 
 # Enabling the cache system in a specific folder
-fastf1.Cache.enable_cache('cache') 
+#fastf1.Cache.enable_cache('cache') 
 
 def get_drivers_short_name(session: fastf1.core.Session):
     """
